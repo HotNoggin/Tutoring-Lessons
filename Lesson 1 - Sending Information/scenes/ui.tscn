@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfqatfsv2lhll"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_fqgrj"]
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("health_bar")]
+script = ExtResource("1_fqgrj")
+health_bar = NodePath("UI/ProgressBar")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.95
+anchor_right = 0.75
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0

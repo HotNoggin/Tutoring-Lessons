@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://dqi1ifye2vowh"]
+[gd_scene load_steps=4 format=3 uid="uid://dqi1ifye2vowh"]
 
-[node name="Level" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_ycphd"]
+[ext_resource type="PackedScene" uid="uid://drbsm65ppwjxm" path="res://scenes/player.tscn" id="2_wqxh4"]
+[ext_resource type="PackedScene" uid="uid://dfqatfsv2lhll" path="res://scenes/ui.tscn" id="3_f4rt4"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_ycphd")
+player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource("2_wqxh4")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_f4rt4")]
+player = NodePath("../Player")
