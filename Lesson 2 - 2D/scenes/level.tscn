@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4pd67axjlc5"]
+
+[ext_resource type="PackedScene" uid="uid://dqnmd7m1m2fgv" path="res://scenes/player.tscn" id="1_doj2t"]
+[ext_resource type="Texture2D" uid="uid://6mqk80is0fns" path="res://icon.png" id="2_er74p"]
+[ext_resource type="PackedScene" uid="uid://crjghy4bnrm3v" path="res://scenes/box.tscn" id="3_p6bx6"]
+[ext_resource type="PackedScene" uid="uid://hm6x0vpwe41e" path="res://scenes/collectable.tscn" id="4_dxwm1"]
+[ext_resource type="PackedScene" uid="uid://c0ckvglnbet0s" path="res://scenes/hazard.tscn" id="5_xslmw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2ip2"]
+size = Vector2(384, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3myn"]
+size = Vector2(154, 61)
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_doj2t")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2.38419e-07, 84)
+scale = Vector2(2.9375, 0.3125)
+texture = ExtResource("2_er74p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 88)
+shape = SubResource("RectangleShape2D_e2ip2")
+
+[node name="Box" parent="." instance=ExtResource("3_p6bx6")]
+position = Vector2(-94, -84)
+
+[node name="Box2" parent="." instance=ExtResource("3_p6bx6")]
+position = Vector2(-63, -58)
+
+[node name="Box3" parent="." instance=ExtResource("3_p6bx6")]
+position = Vector2(-150, -65)
+
+[node name="Box4" parent="." instance=ExtResource("3_p6bx6")]
+position = Vector2(-147, -85)
+
+[node name="Area2D" type="Area2D" parent="."]
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-108, 34)
+shape = SubResource("RectangleShape2D_c3myn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(-108, 35)
+scale = Vector2(1.20313, 0.484375)
+texture = ExtResource("2_er74p")
+
+[node name="Collectable" parent="." instance=ExtResource("4_dxwm1")]
+position = Vector2(92, 45)
+
+[node name="Hazard" parent="." instance=ExtResource("5_xslmw")]
+position = Vector2(60, 58)
+
+[node name="Hazard2" parent="." instance=ExtResource("5_xslmw")]
+position = Vector2(125, 60)
